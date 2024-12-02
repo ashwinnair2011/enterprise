@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginScreen from '@/components/LoginScreen.vue';
 import DashboardScreen from '@/components/DashboardScreen.vue';
-// We'll add the Dashboard component later
+import { handleRedirectCallback } from '@/auth';
 
 const routes = [
   {
@@ -12,9 +12,26 @@ const routes = [
   {
     path: '/dashboard',
     name: 'DashboardScreen',
-    component: DashboardScreen,
-    props: route => ({ username: route.query.username })// Pass the username as a prop 
+    component: DashboardScreen
+  },
+  {
+    path: '/callback',
+    name: 'Callback',
+    component: {
+      template: '<div>Loading...</div>',
+      async beforeMount() {
+        console.log('Before mount in callback route');
+        try {
+          const { appState } = await handleRedirectCallback();
+          console.log('App state after callback:', appState);
+          this.$router.replace(appState?.targetUrl || '/dashboard');
+        } catch (error) {
+          console.error('Callback Error:', error);
+          this.$router.replace('/');
+        }
+      }
     }
+  }
 ];
 
 const router = createRouter({

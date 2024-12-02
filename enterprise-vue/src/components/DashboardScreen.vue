@@ -1,14 +1,26 @@
 <template>
     <div class="dashboard-container">
       <h2>Dashboard</h2>
-      <p>Welcome, {{ username }}!</p>
+      <p>Welcome, {{ userName }}!</p>
     </div>
   </template>
   
   <script>
+  import { getUser, logout } from '@/auth';
   export default {
     name: 'DashboardScreen',
-    props: ['username']
+    data() {
+      return {
+        userName: ''
+      };
+    },
+    async created() {
+      const user = await getUser();
+      this.userName = user.name;
+    },
+    methods: {
+        logout
+    }
   };
   </script>
   

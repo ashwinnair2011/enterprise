@@ -8,7 +8,7 @@ const initAuth0 = async () => {
       domain: 'dev-fk4m6z4l1na0d6ja.us.auth0.com',
       clientId: 'VfuMhAzmCQuvvBNPiIfXA2qgkdcwsHOb',
       authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: `${window.location.origin}/callback`
       }
     });
 
@@ -17,6 +17,8 @@ const initAuth0 = async () => {
     console.error('Failed to initialize Auth0 client:', error);
   }
 };
+
+await initAuth0();
 
 const login = async () => {
   await auth0Client.loginWithRedirect();
@@ -36,6 +38,13 @@ const getUser = async () => {
   return await auth0Client.getUser();
 };
 
-initAuth0();
+const handleRedirectCallback = async () => {
+  console.log('Handling redirect callback');
+  const result = await auth0Client.handleRedirectCallback();
+  console.log('Redirect Callback Result:', result); // Verify callback handling
+  return result;
+};
 
-export { login, logout, isAuthenticated, getUser };
+
+
+export { login, logout, isAuthenticated, getUser, handleRedirectCallback };
