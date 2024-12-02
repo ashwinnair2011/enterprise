@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginScreen from '@/components/LoginScreen.vue';
+import DashboardScreen from '@/components/DashboardScreen.vue';
 // We'll add the Dashboard component later
 
 const routes = [
@@ -8,7 +9,12 @@ const routes = [
     name: 'LoginScreen',
     component: LoginScreen
   },
-  // We'll add the Dashboard route later
+  {
+    path: '/dashboard',
+    name: 'DashboardScreen',
+    component: DashboardScreen,
+    props: route => ({ username: route.query.username })// Pass the username as a prop 
+    }
 ];
 
 const router = createRouter({
