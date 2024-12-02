@@ -1,35 +1,19 @@
 <template>
   <div class="login-container">
     <h2>Login</h2>
-    <form @submit.prevent="handleLogin">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" v-model="username" required>
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password" required>
-      </div>
-      <button type="submit">Login</button>
-    </form>
+    <button @click="login">Login with Auth0</button>
   </div>
 </template>
 
 <script>
+import { login } from '@/auth';
+
 export default {
   name: 'LoginScreen',
-  data() {
+  setup() {
     return {
-      username: '',
-      password: ''
+      login
     };
-  },
-  methods: {
-    handleLogin() {
-      console.log('Username:', this.username);
-      console.log('Password:', this.password);
-      this.$router.push({path:'/dashboard', query: { username: this.username } }); // Redirect to dashboard with username
-    }
   }
 };
 </script>
