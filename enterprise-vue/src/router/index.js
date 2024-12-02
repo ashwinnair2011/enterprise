@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginScreen from '@/components/LoginScreen.vue';
 import DashboardScreen from '@/components/DashboardScreen.vue';
+import NotFoundScreen from '@/components/NotFoundScreen.vue';
 import { handleRedirectCallback } from '@/auth';
 import authGuard from '@/authGuard';
 
@@ -33,6 +34,11 @@ const routes = [
         }
       }
     }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFoundScreen',
+    component: NotFoundScreen
   }
 ];
 
