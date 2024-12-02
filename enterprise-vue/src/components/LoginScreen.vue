@@ -28,7 +28,7 @@ export default {
     handleLogin() {
       console.log('Username:', this.username);
       console.log('Password:', this.password);
-      this.$router.push('/dashboard'); // Redirect to dashboard after login
+      this.$router.push({path:'/dashboard', query: { username: this.username } }); // Redirect to dashboard with username
     }
   }
 };
