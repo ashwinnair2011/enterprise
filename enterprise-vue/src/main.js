@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-import './auth'; // Import auth.js to trigger its initialization
+import './assets/styles/global.css';
 
 const app = createApp(App);
 app.use(router);

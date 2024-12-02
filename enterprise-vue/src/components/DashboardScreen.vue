@@ -1,5 +1,5 @@
 <template>
-    <div class="dashboard-container">
+    <div class="dashboard-container container">
       <h2>Welcome, {{ userName }}!</h2>
       <button @click="logout">Logout</button>
     </div>
@@ -29,13 +29,9 @@
   };
   </script>
   
-  <style scoped>
-  .dashboard-container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  </style>
+<style scoped>
+ .dashboard-container {
+     text-align: center;
+ }
+</style>
   

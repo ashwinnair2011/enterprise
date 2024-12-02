@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="login-container card">
     <h2>Login</h2>
     <button @click="login">Login with Auth0</button>
   </div>
@@ -10,10 +10,8 @@ import { login } from '@/auth';
 
 export default {
   name: 'LoginScreen',
-  setup() {
-    return {
-      login
-    };
+  methods: {
+    login
   }
 };
 </script>
@@ -21,9 +19,7 @@ export default {
 <style scoped>
 .login-container {
   max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  margin: 100px auto;
+  text-align: center;
 }
 </style>
