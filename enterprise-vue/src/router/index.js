@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import LoginScreen from '@/components/LoginScreen.vue';
 import DashboardScreen from '@/components/DashboardScreen.vue';
 import { handleRedirectCallback } from '@/auth';
+import authGuard from '@/authGuard';
 
 const routes = [
   {
@@ -12,7 +13,8 @@ const routes = [
   {
     path: '/dashboard',
     name: 'DashboardScreen',
-    component: DashboardScreen
+    component: DashboardScreen,
+    beforeEnter: authGuard
   },
   {
     path: '/callback',
