@@ -5,7 +5,7 @@ let auth0Client = null;
 const initAuth0 = async () => {
   try {
     auth0Client = await createAuth0Client({
-      domain: 'dev-fk4m6z4l1na0d6ja.us.auth0.com',
+      domain: 'auth.lasercloud.com.au',
       clientId: 'VfuMhAzmCQuvvBNPiIfXA2qgkdcwsHOb',
       authorizationParams: {
         redirect_uri: `${window.location.origin}/callback`
